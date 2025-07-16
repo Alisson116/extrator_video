@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ScraperAPI (se quiser, defina como variável de ambiente ou direto no código)
-const SCRAPER_API_KEY = process.env.SCRAPERAPI_KEY || "2b0361825a9734db5d03db150bb18454";
+const SCRAPER_API_KEY = process.env.SCRAPERAPI_KEY;
 const SCRAPER_BASE = 'https://api.scraperapi.com';
 
 app.use(cors());
@@ -29,7 +29,6 @@ app.post('/extract', async (req, res) => {
 
     browser = await puppeteer.launch({
       headless: true,
-      executablePath: '/nix/store/zi4f80l169xlmivz8vja8wlphq74qqk0-chromium-125.0.6422.141/bin/chromium',
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
